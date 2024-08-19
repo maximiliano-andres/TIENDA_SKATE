@@ -1,0 +1,29 @@
+
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-data:/data/db
+
+  app:
+    image: node:19
+    container_name: app
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    command: npm run dev
+    ports:
+      - "3000:1010"
+    depends_on:
+      - mongo
+    environment:
+      - mongo_uri=mongodb://mongo:27017/maximiliano_db
+
+volumes:
+  mongo-data:
+

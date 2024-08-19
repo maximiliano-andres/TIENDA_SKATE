@@ -1,0 +1,155 @@
+<style>
+    .error-container {
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #f5c800;
+        padding: 15px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        max-width: 350px;
+        margin: 20px auto;
+    }
+
+    .error-message {
+        color: #f5c800;
+        font-weight: bold;
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .book_section {
+    padding: 60px 0;
+    background-image: url(../../assets/images/banner-skate.jpg);
+    background-size: cover; /* Asegura que la imagen cubra toda el área */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen */
+}
+
+    .heading_container h2 {
+        font-size: 42px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        color: #000000;
+        text-shadow: #d400a6;
+    }
+
+    .form_container {
+        background: #00000083;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .color_letra{
+        color: #ddd;
+    }
+
+    .btn_box {
+        text-align: center;
+    }
+
+    .btn_box button {
+        background: #f5c800;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .btn_box button:hover {
+        background: #d4a200;
+        color: #000000
+    }
+</style>
+
+<%- include('layouts/header.ejs'); -%>
+<!-- book section -->
+<section class="book_section layout_padding">
+    <div class="container text-center">
+        <div class="heading_container heading-section ">
+            <h4>Registrate y Visita nuestros Productos!!!</h4>
+            <% if (error) { %>
+                <div class="error-container">
+                    <p class="error-message"><%= error %></p>
+                </div>
+            <% } %>
+        </div>
+
+
+        <div class="container">
+            <div class="col-md-6 mx-auto">
+                <div class="form_container">
+                    <form action="/tienda_frijolitox/registro" method="POST" enctype="multipart/form-data">
+                        <div>
+                            <input type="text" class="form-control" name="username" placeholder="Ingresa un nombre de usuario" required />
+                        </div>
+                        <div>
+                            <input type="email" class="form-control" name="email" placeholder="Ingresa un email" required />
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" name="password1" placeholder="Ingresa una contraseña" required />
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" name="password2" placeholder="Confirma la contraseña" required />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="nombre_1" placeholder="Primer nombre" required />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="nombre_2" placeholder="Segundo nombre" />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="apellido_1" placeholder="Primer apellido" required />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="apellido_2" placeholder="Segundo apellido" required />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="rut" placeholder="RUT" required />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="descripcion" placeholder="Descripción" />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="telefono_1" placeholder="Teléfono 1" required />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="telefono_2" placeholder="Teléfono 2" />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="direccion" placeholder="Dirección" required />
+                        </div>
+                        <div>
+                            <input type="date" class="form-control" name="fecha_nacimiento" placeholder="Fecha de nacimiento" required />
+                        </div>
+                        <div>
+                            <input type="file" class="form-control" name="imagen" placeholder="URL de la imagen" />
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="role" name="role" value="admin">
+                            <label class="form-check-label color_letra" for="role">Registrar como administrador</label>
+                        </div>
+                        <div class="btn_box">
+                            <button type="submit">Registrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end book section -->
+
+<%- include('layouts/footer.ejs'); -%>

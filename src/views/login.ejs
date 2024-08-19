@@ -1,0 +1,115 @@
+<%- include('layouts/header.ejs'); -%>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #000000;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .book_section {
+    padding: 60px 0;
+    background-image: url(../../assets/images/banner-skate.jpg);
+    background-size: cover; /* Asegura que la imagen cubra toda el área */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen */
+}
+
+
+    .heading_container h2 {
+        font-size: 2.5em;
+        color: #000000;
+        margin-bottom: 20px;
+        
+    }
+
+    .error-container {
+        background-color: #7100ce79;
+        border: 1px solid #5a0096a8;
+        padding: 10px 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 300px;
+        margin: 20px auto;
+    }
+
+    .error-message {
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .form_container {
+        background-color: #000000a2;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn_box {
+        text-align: center;
+    }
+
+    .btn_box button {
+        background-color: #7200b4d3;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn_box button:hover {
+        background-color: #ffef08;
+        color: #000000;
+    }
+</style>
+
+
+<section class="book_section layout_padding">
+    <div class="container text-center">
+        <div class="heading_container heading-section ">
+            <h4>Disfruta de Nuestra Gastronomía!!!</h4>
+            <% if (error) { %>
+                <div class="error-container">
+                    <p class="error-message"><%= error %></p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-md-6 mx-auto">
+            <div class="form_container">
+                <form action="login" method="POST">
+                    <div>
+                        <input type="email" name="email" class="form-control" placeholder="Ingresa un email" required />
+                    </div>
+                    <div>
+                        <input type="password" name="password1" class="form-control" placeholder="Ingresa una ontraseña" required />
+                    </div>
+                    <div class="btn_box">
+                        <button type="submit">Login</button><br><br>
+                        <a href="/tienda_frijolitox/registro" class="btn btn-dark">registrar</a>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('layouts/footer.ejs'); -%>

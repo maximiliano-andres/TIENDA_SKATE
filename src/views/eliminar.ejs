@@ -1,0 +1,30 @@
+<%- include('layouts/header.ejs'); -%>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-content">
+                    <div class="container">
+                        <h1>¿Deseas eliminar el producto: <%= producto.marca %> <%= producto.modelo %>?</h1><br>
+                        <div class="buttons">
+                            <form action="/tienda_frijolitox/producto_eliminar/<%= id %>" method="POST" style="display:inline;">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="boton_nuevo mx-2">Eliminar</button>
+                            </form>
+                            <form action="/tienda_frijolitox/producto/<%= id %>" method="GET" style="display:inline;">
+                                <button class="boton_nuevo-cancelar mx-2" type="submit">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<%- include('layouts/footer.ejs'); -%>

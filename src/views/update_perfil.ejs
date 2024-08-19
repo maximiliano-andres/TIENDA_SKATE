@@ -1,0 +1,120 @@
+<%- include('layouts/header.ejs'); -%>
+
+<style>
+    /* Estilos */
+    .product_section {
+        padding: 60px 0;
+        background-image: url(../../assets/images/banner-skate-4.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .heading_container h2 {
+        font-size: 42px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        color: #c600f8;
+    }
+
+    .form_container {
+        background: #00000088;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(8, 8, 0, 0.658);
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .btn_box {
+        text-align: center;
+    }
+
+    .btn_box button {
+        background: #f5c800;
+        color: #000000;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .btn_box button:hover {
+        background: #d4a200;
+    }
+
+    .img-preview {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+</style>
+
+<section class="product_section layout_padding">
+    <div class="container text-center">
+        <div class="heading_container heading-section">
+            <h4>Editar Perfil</h4>
+        </div>
+        <div class="container">
+            <div class="col-md-6 mx-auto">
+                <div class="form_container">
+                    <form action="/tienda_frijolitox/editar_perfil/<%= id %>" method="POST" enctype="multipart/form-data">
+                        <div>
+                            <input type="text" class="form-control" id="nombre_1" name="nombre_1" placeholder="Primer Nombre" required value="<%= persona.nombre_1 %>">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" id="nombre_2" name="nombre_2" placeholder="Segundo Nombre" value="<%= persona.nombre_2 %>">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" id="apellido_1" name="apellido_1" placeholder="Primer Apellido" required value="<%= persona.apellido_1 %>">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" id="apellido_2" name="apellido_2" placeholder="Segundo Apellido" value="<%= persona.apellido_2 %>">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" id="rut" name="rut" placeholder="RUT" required value="<%= persona.rut %>">
+                        </div>
+                        <div>
+                            <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción"><%= persona.descripcion %></textarea>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" id="telefono_1" name="telefono_1" placeholder="Teléfono 1" required value="<%= persona.telefono_1 %>">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" id="telefono_2" name="telefono_2" placeholder="Teléfono 2" value="<%= persona.telefono_2 %>">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección" required value="<%= persona.direccion %>">
+                        </div>
+                        <div>
+                            <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required value="<%= persona.fecha_nacimiento %>">
+                        </div>
+                        <div>
+                            <input type="file" class="form-control" id="imagen" name="imagen">
+                            <% if (persona.imagen) { %>
+                                <img src="../../assets/images/perfil/<%= persona.imagen %>" alt="Imagen de Perfil" class="img-preview">
+                            <% } %>
+                        </div>
+                        <div class="btn_box">
+                            <button type="submit">Actualizar Perfil</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('layouts/footer.ejs'); -%>
