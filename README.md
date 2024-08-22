@@ -19,8 +19,9 @@ El **Proyecto Restaurante** es una solución moderna y eficiente para la gestió
 
 ### 🎯 Funcionalidades Principales
 
-- **Gestión del Menú**: Facilita la adición, edición y eliminación de platos en el menú.
-- **Reservas Online**: Permite a los clientes realizar reservas directamente desde la página web.
+- **Gestión de productos intuitiva**: Facilita el recorrido por los productos deisponibles.
+- **inicio de sesion**: Permite a los clientes agregar productos al carrito solo si estan registrados.
+- **admin**: Solo los usuarios Administradores pueden agregar,modificar o eliminar productos a la tienda.
 - **Interfaz Responsiva**: Diseño adaptado a cualquier dispositivo, proporcionando una experiencia de usuario óptima.
 
 ## 🛠️ Tecnologías y Herramientas
