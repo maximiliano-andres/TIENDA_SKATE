@@ -15,7 +15,7 @@
 
 ## 📝 Descripción del Proyecto
 
-El **Proyecto Restaurante** es una solución moderna y eficiente para la gestión integral de un restaurante. Desarrollado con **Node.js** y **Express**, y utilizando **EJS** para el renderizado dinámico de las vistas, esta aplicación ofrece una experiencia fluida tanto para el personal del restaurante como para los clientes.
+El **Proyecto Tienda Skate** es una solución moderna y eficiente para los que desean optar por una pagina web de ventas. Desarrollado con **Node.js** y **Express**, y utilizando **EJS** para el renderizado dinámico de las vistas, esta aplicación ofrece una experiencia fluida tanto para el personal del restaurante como para los clientes.
 
 ### 🎯 Funcionalidades Principales
 
