@@ -1,4 +1,4 @@
-# 🍽️ Proyecto Tienda Skate - EJS
+#  Proyecto Tienda Skate - EJS
 
 [![Node.js](https://img.shields.io/badge/Node.js-v14.17.0-green)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-v4.17.1-blue)](https://expressjs.com/)
