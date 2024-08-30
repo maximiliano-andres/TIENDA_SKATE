@@ -9,7 +9,7 @@ const requisitos_productos = Joi.object({
     modelo: Joi.string().min(1).max(100).required(),
     descripcion: Joi.string().max(500).required(),
     precio: Joi.number().min(0).required(),
-    categoria: Joi.string().min(1).max(50).required(),
+    categoria: Joi.string().trim().uppercase().valid("SKATEBOARDS", "SURFSKATES", "PENNY", "SKATES", "SCOOTERS", "PROTECCIONES", "ROPA").required(),
     stock: Joi.number().min(0).required(),
     imagen: Joi.string().allow('').optional()
 });
@@ -18,7 +18,7 @@ const requisitos_productos = Joi.object({
 const validador_productos = (req, res, next) => {
     const { error } = requisitos_productos.validate(req.body);
     if (error) {
-        mensaje(`ERROR Validador Productos: ${error.details[0].message}`);
+        mensaje(`(ERROR) VALIDADOR PRODUCTOS: ${error.details[0].message}`);
         return res.status(400).json({ message: "Error de validación", error: error.details[0].message });
     }
     next();

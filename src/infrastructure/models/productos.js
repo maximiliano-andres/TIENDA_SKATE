@@ -1,5 +1,11 @@
 import mongoose from "mongoose";
 
+//formato a fecha legible
+const formatDate = (date) => {
+    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    return new Date(date).toLocaleDateString('es-ES', options);
+};
+
 const productosSchema = new mongoose.Schema({
     marca: {
         type: String,
@@ -44,11 +50,13 @@ const productosSchema = new mongoose.Schema({
     },
     fechaCreacion: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        get: formatDate
     },
     fechaActualizacion: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        get: formatDate
     }
 });
 

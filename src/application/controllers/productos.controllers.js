@@ -23,39 +23,21 @@ const crear_producto = async(req,res) => {
         
         marca = marca.trim().toUpperCase();
         modelo = modelo.trim().toUpperCase();
-        descripcion = descripcion.trim();
-        precio = parseFloat(precio);
         categoria = categoria.trim().toUpperCase();
-        stock = parseInt(stock);
         //imagen = imagen ? imagen.trim() : "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060";
     
         const lista_productos =  ["SKATEBOARDS", "SURFSKATES", "PENNY", "SKATES", "SCOOTERS", "PROTECCIONES", "ROPA",]
 
-        if (!marca || !modelo || !descripcion || !precio || !categoria || !stock) {
-            mensaje("Crear Producto: Faltan campos por llenar")
-            return res.status(400).json({ message: "NO completaste todos los campos requeridos" })
-        }
+        //verifico que reciba los datos
+        mensaje({marca, modelo, descripcion, precio, categoria, stock})
+        mensaje(imagen)
+
 
         const producto_repetido = await Productos.findOne({ marca, modelo, categoria })
 
         if (producto_repetido) {
             mensaje("Crear Producto: El producto ya se encuentra registrado")
             return res.status(400).json({ massage: "El producto ya se encuentra registrado" })
-        }
-
-        if (isNaN(precio)) {
-            mensaje("Crear Producto: No cumple el formato o precio es nulo")
-            return res.status(400).json({ massage: `el valor ${precio} NO cumple el formato establecido en precio!!!` })
-        }
-
-        if (!lista_productos.includes(categoria)) {
-            mensaje("Crear Producto: La categoria no se encontra en la lista establecida")
-            return res.status(400).json({ massage: `La categoria ${categoria} NO se encuentra en los datos establecidos!!!` })
-        }
-
-        if (isNaN(stock)) {
-            mensaje("Crear Producto: El Stock no cumple el formato o es nulo")
-            return res.status(400).json({ massage: `el valor ${stock} NO cumple el formato establecido en stock!!!` })
         }
 
         const producto_nuevo = await Productos.create({ marca, modelo, descripcion, precio, categoria, stock, imagen });
