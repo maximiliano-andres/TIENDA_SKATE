@@ -127,49 +127,39 @@ const act_productos = async(req,res) => {
         const {id } = req.params;
 
         if (!id){
-            mensaje("Act.Prodcutos: No se encontro un ID valido")
+            mensaje("ACT PRODUCTO: No se encontro un ID valido")
             return res.status(400).json({message: "no se encontro un ID valido"})
         }
 
         if(!mongoose.Types.ObjectId.isValid(id)){
-            mensaje("Act.Prodcutos: El ID no tiene un formato valido")
+            mensaje("ACT PRODUCTO: El ID no tiene un formato valido")
             return res.status(400).json({message: "el ID no tiene un formato valido"})
         }
 
         let {marca, modelo, descripcion, precio, categoria, stock,} = req.body;
         let imagen = req.file ? req.file.filename : "default.png"
 
-        mensaje("Act.Productos: Información del archivo:", req.file);
-        mensaje("Act.Productos: Información del archivo:", req.filename);
-        mensaje("Act.Productos: Nombre de la imagen:", imagen);
+        mensaje("ACT PRODUCTO: Información del archivo:", req.file);
+        mensaje("ACT PRODUCTO: Información del archivo:", req.filename);
+        mensaje("ACT PRODUCTO: Nombre de la imagen:", imagen);
 
         marca = marca.trim().toUpperCase();
         modelo = modelo.trim().toUpperCase();
-        descripcion = descripcion.trim();
-        precio = parseFloat(precio);
         categoria = categoria.trim().toUpperCase();
-        stock = parseInt(stock);
-        
-        const lista_productos =  ["SKATEBOARDS", "SURFSKATES", "PENNY", "SKATES", "SCOOTERS", "PROTECCIONES", "ROPA",]
-        
-        if (!lista_productos.includes(categoria)) {
-            mensaje("Crear Producto: La categoria no se encontra en la lista establecida")
-            return res.status(400).json({ massage: `La categoria ${categoria} NO se encuentra en los datos establecidos!!!` })
-        }
-
 
         const actualizar_productos = await Productos.findByIdAndUpdate(id, {marca, modelo, descripcion, precio, categoria, stock,imagen}, {new:true} );
 
         if (!actualizar_productos){
-            mensaje("Act.Producto: No se encontro un archivo para actualizar")
+            mensaje("ACT PRODUCTO: No se encontro un archivo para actualizar")
             return res.status(400).json({message: "no se encontro un archivo para actualizar"})
         }
 
-        mensaje(`Act.Producto: Se actualizo el producto ${marca}, modelo ${modelo} con existo`)
+        mensaje(`ACT PRODUCTO: Se actualizo el producto ${marca}, modelo ${modelo} con existo`)
         return res.redirect(`/tienda_frijolitox/producto/${id}`)
 
     }
     catch(error){
+        mensaje("(ERROR)ACT PRODUCTO: "+ error)
         res.status(500).json({message: "un error de codigo" + error})
     }
 };
